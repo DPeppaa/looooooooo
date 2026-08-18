@@ -19,7 +19,7 @@ shader_parameter/outlineColor = Color(0, 0, 0, 1)
 shader_parameter/depth_threshold = 0.025
 shader_parameter/normal_threshold = 0.5
 shader_parameter/normal_smoothing = 0.25
-shader_parameter/max_thickness = 1.5000000712500001
+shader_parameter/max_thickness = 1.50000007125
 shader_parameter/min_thickness = 0.5
 shader_parameter/max_distance = 75.0
 shader_parameter/min_distance = 2.0
@@ -80,6 +80,8 @@ script = ExtResource("1_bhtu2")
 
 [node name="pivot" type="Node3D" parent="." unique_id=1353261542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="look_at_camera" type="Camera3D" parent="pivot" unique_id=671125495]
 
 [node name="camera" type="Camera3D" parent="pivot" unique_id=1557727052]
 

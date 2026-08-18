@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://dbwwhsesk0m6j"]
+
+[ext_resource type="ArrayMesh" uid="uid://c15igwu2yrpry" path="res://resources/model/kitchen/down_cabinets.vox" id="1_tl4t0"]
+[ext_resource type="Script" uid="uid://ced4gfrbkpll3" path="res://temp_scripts/doors.gd" id="2_qdtnc"]
+[ext_resource type="ArrayMesh" uid="uid://b7av4xueuk0yg" path="res://resources/model/kitchen/down_cabinets_door.vox" id="2_qosk6"]
+[ext_resource type="Script" uid="uid://duovy50k7fmbo" path="res://temp_scripts/doors4.gd" id="4_qdtnc"]
+
+[sub_resource type="Animation" id="Animation_qosk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left_door_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right_door_point:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tl4t0"]
+resource_name = "door_open"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left_door_point:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right_door_point:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707963, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qosk6"]
+_data = {
+&"RESET": SubResource("Animation_qosk6"),
+&"door_open": SubResource("Animation_tl4t0")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y78tp"]
+size = Vector3(0.2, 0.8, 1.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdtnc"]
+size = Vector3(1, 1.1, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a715m"]
+size = Vector3(1.9, 1.1, 1)
+
+[node name="down_cabinet" type="Node3D" unique_id=1599529041]
+
+[node name="DownCabinets" type="MeshInstance3D" parent="." unique_id=906258310]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("1_tl4t0")
+
+[node name="doors" type="Node3D" parent="." unique_id=2074333068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, 0)
+script = ExtResource("2_qdtnc")
+
+[node name="left_door_point" type="Node3D" parent="doors" unique_id=631412951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 2.1000001)
+
+[node name="left_door" type="MeshInstance3D" parent="doors/left_door_point" unique_id=2060815883]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.4)
+mesh = ExtResource("2_qosk6")
+
+[node name="right_door_point" type="Node3D" parent="doors" unique_id=1899869399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 0.39999995)
+
+[node name="right_door" type="MeshInstance3D" parent="doors/right_door_point" unique_id=1223239792]
+transform = Transform3D(-1, 0, -8.742278e-08, 7.642742e-15, -1, -8.742278e-08, -8.742278e-08, -8.742278e-08, 1, 0, 0.8, 0.4000001)
+mesh = ExtResource("2_qosk6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doors" unique_id=1567711624]
+libraries/ = SubResource("AnimationLibrary_qosk6")
+
+[node name="detection" type="Area3D" parent="doors" unique_id=626371644]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors/detection" unique_id=858460987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44999996, 0.49999997, 1.2499999)
+shape = SubResource("BoxShape3D_y78tp")
+
+[node name="Timer" type="Timer" parent="doors" unique_id=2010787274]
+wait_time = 0.2
+one_shot = true
+
+[node name="doors2" type="Node3D" parent="." unique_id=1505190179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, -1.8000001)
+script = ExtResource("2_qdtnc")
+
+[node name="left_door_point" type="Node3D" parent="doors2" unique_id=3235430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 2.1000001)
+
+[node name="left_door" type="MeshInstance3D" parent="doors2/left_door_point" unique_id=1159637406]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.4)
+mesh = ExtResource("2_qosk6")
+
+[node name="right_door_point" type="Node3D" parent="doors2" unique_id=1960840064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 0.39999995)
+
+[node name="right_door" type="MeshInstance3D" parent="doors2/right_door_point" unique_id=2141549006]
+transform = Transform3D(-1, 0, -8.742278e-08, 7.642742e-15, -1, -8.742278e-08, -8.742278e-08, -8.742278e-08, 1, 0, 0.8, 0.4000001)
+mesh = ExtResource("2_qosk6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doors2" unique_id=668570471]
+libraries/ = SubResource("AnimationLibrary_qosk6")
+
+[node name="detection" type="Area3D" parent="doors2" unique_id=112476015]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors2/detection" unique_id=1167399441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999997, 0.49999997, 1.2499999)
+shape = SubResource("BoxShape3D_y78tp")
+
+[node name="Timer" type="Timer" parent="doors2" unique_id=1379034151]
+wait_time = 0.2
+one_shot = true
+
+[node name="doors3" type="Node3D" parent="." unique_id=786266584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, -3.6000001)
+script = ExtResource("2_qdtnc")
+
+[node name="left_door_point" type="Node3D" parent="doors3" unique_id=1296873480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 2.1000001)
+
+[node name="left_door" type="MeshInstance3D" parent="doors3/left_door_point" unique_id=1880279622]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.4)
+mesh = ExtResource("2_qosk6")
+
+[node name="right_door_point" type="Node3D" parent="doors3" unique_id=1721329315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 0.39999995)
+
+[node name="right_door" type="MeshInstance3D" parent="doors3/right_door_point" unique_id=1168495216]
+transform = Transform3D(-1, 0, -8.742278e-08, 7.642742e-15, -1, -8.742278e-08, -8.742278e-08, -8.742278e-08, 1, 0, 0.8, 0.4000001)
+mesh = ExtResource("2_qosk6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doors3" unique_id=406937545]
+libraries/ = SubResource("AnimationLibrary_qosk6")
+
+[node name="detection" type="Area3D" parent="doors3" unique_id=1700106885]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors3/detection" unique_id=888983140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999997, 0.49999997, 1.2499999)
+shape = SubResource("BoxShape3D_y78tp")
+
+[node name="Timer" type="Timer" parent="doors3" unique_id=205320044]
+wait_time = 0.2
+one_shot = true
+
+[node name="doors4" type="Node3D" parent="." unique_id=302789855]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8000001, 0, 1.725)
+script = ExtResource("4_qdtnc")
+
+[node name="left_door_point" type="Node3D" parent="doors4" unique_id=1338263839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 2.1000001)
+
+[node name="left_door" type="MeshInstance3D" parent="doors4/left_door_point" unique_id=1740486391]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.4)
+mesh = ExtResource("2_qosk6")
+
+[node name="right_door_point" type="Node3D" parent="doors4" unique_id=1976627560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.10000001, 0.39999995)
+
+[node name="right_door" type="MeshInstance3D" parent="doors4/right_door_point" unique_id=2027772523]
+transform = Transform3D(-1, 0, -8.742278e-08, 7.642742e-15, -1, -8.742278e-08, -8.742278e-08, -8.742278e-08, 1, 0, 0.8, 0.4000001)
+mesh = ExtResource("2_qosk6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doors4" unique_id=1945322907]
+libraries/ = SubResource("AnimationLibrary_qosk6")
+
+[node name="detection" type="Area3D" parent="doors4" unique_id=1531832749]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors4/detection" unique_id=1587528853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999997, 0.49999997, 1.2499999)
+shape = SubResource("BoxShape3D_y78tp")
+
+[node name="Timer" type="Timer" parent="doors4" unique_id=219840809]
+wait_time = 0.2
+one_shot = true
+
+[node name="collision" type="StaticBody3D" parent="." unique_id=926714462]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision" unique_id=847783916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.55, -0.05000007)
+shape = SubResource("BoxShape3D_qdtnc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="collision" unique_id=857577690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.55, 2.7)
+shape = SubResource("BoxShape3D_a715m")
+
+[connection signal="area_entered" from="doors/detection" to="doors" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="doors/detection" to="doors" method="_on_detection_area_exited"]
+[connection signal="timeout" from="doors/Timer" to="doors" method="_on_timer_timeout"]
+[connection signal="area_entered" from="doors2/detection" to="doors2" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="doors2/detection" to="doors2" method="_on_detection_area_exited"]
+[connection signal="timeout" from="doors2/Timer" to="doors2" method="_on_timer_timeout"]
+[connection signal="area_entered" from="doors3/detection" to="doors3" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="doors3/detection" to="doors3" method="_on_detection_area_exited"]
+[connection signal="timeout" from="doors3/Timer" to="doors3" method="_on_timer_timeout"]
+[connection signal="area_entered" from="doors4/detection" to="doors4" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="doors4/detection" to="doors4" method="_on_detection_area_exited"]
+[connection signal="timeout" from="doors4/Timer" to="doors4" method="_on_timer_timeout"]

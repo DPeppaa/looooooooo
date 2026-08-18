@@ -14,6 +14,7 @@ class_name player_controller
 func _ready() -> void:
 	interact.visible = false
 	bean.visible = false
+	camera.make_current()
 	
 func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("a","d","w","s").normalized()

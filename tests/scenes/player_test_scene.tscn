@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3rcnn3qpls0c" path="res://tests/scenes/player_test_scene.gd" id="1_qutf8"]
 [ext_resource type="PackedScene" uid="uid://b4b41l8w0twu4" path="res://characters/player/player_controller.tscn" id="1_yi3wj"]
+[ext_resource type="PackedScene" uid="uid://dbwwhsesk0m6j" path="res://resources/model/kitchen/down_cabinet.tscn" id="3_sjdrk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qpve"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,6 +18,9 @@ glow_enabled = true
 
 [node name="player_test_scene" type="Node3D" unique_id=1478108712]
 script = ExtResource("1_qutf8")
+
+[node name="player_controller" parent="." unique_id=1493658465 instance=ExtResource("1_yi3wj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2520914, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1120610679]
 environment = SubResource("Environment_qutf8")
@@ -35,7 +39,7 @@ size = Vector3(10, 1, 10)
 [node name="CSGBox3D" type="CSGBox3D" parent="environment" unique_id=1016162158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6394076, 0.34395468, 0)
 
-[node name="player" parent="." unique_id=1493658465 instance=ExtResource("1_yi3wj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4934654, 0.7474085, 1.7496119)
+[node name="down_cabinet" parent="." unique_id=1599529041 instance=ExtResource("3_sjdrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5176463, 2.3841858e-07, 0.51259303)
 
-[editable path="player"]
+[editable path="player_controller"]
