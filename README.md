@@ -11,7 +11,7 @@
 下载教程：
   1：前往 https://godotengine.org 下载Godot 4.7.1
   
-  2：将整个Repo作为zip下载到本地
+  2：将整个Main Branch作为zip下载到本地
 
   3：解压zip
 
