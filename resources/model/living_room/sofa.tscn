@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bm7analwxpnqb"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvlqj8c88mi40" path="res://resources/model/living_room/sofa_bad.vox" id="1_0dsgq"]
+[ext_resource type="Script" uid="uid://cdunpherj53tg" path="res://temp_scripts/sofa.gd" id="1_evx0y"]
+[ext_resource type="PackedScene" uid="uid://cbemhmy0buxy1" path="res://resources/others/explosion.tscn" id="2_a6n8c"]
+[ext_resource type="ArrayMesh" uid="uid://ywl0cuogqso0" path="res://resources/model/living_room/sofa.vox" id="2_evx0y"]
+
+[sub_resource type="Animation" id="Animation_elkec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SofaBad:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sofa:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a6n8c"]
+resource_name = "transform"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SofaBad:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sofa:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_elkec"]
+_data = {
+&"RESET": SubResource("Animation_elkec"),
+&"transform": SubResource("Animation_a6n8c")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y78tp"]
+size = Vector3(1.5, 1.7, 5)
+
+[node name="sofa" type="Node3D" unique_id=124023113]
+script = ExtResource("1_evx0y")
+explosion = ExtResource("2_a6n8c")
+
+[node name="SofaBad" type="MeshInstance3D" parent="." unique_id=1403086151]
+mesh = ExtResource("1_0dsgq")
+
+[node name="Sofa" type="MeshInstance3D" parent="." unique_id=1925788938]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+mesh = ExtResource("2_evx0y")
+
+[node name="Timer" type="Timer" parent="." unique_id=1357336360]
+wait_time = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=999270927]
+libraries/ = SubResource("AnimationLibrary_elkec")
+
+[node name="collision" type="StaticBody3D" parent="." unique_id=1691449109]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision" unique_id=204369784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049999952, 0.85, 0.099999905)
+shape = SubResource("BoxShape3D_y78tp")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

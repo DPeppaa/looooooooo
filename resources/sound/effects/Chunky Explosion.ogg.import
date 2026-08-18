@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dhmqwhg8ha0uo"
+path="res://.godot/imported/Chunky Explosion.ogg-0f325a06490f2819b24756cb29589ea7.oggvorbisstr"
+
+[deps]
+
+source_file="res://resources/sound/effects/Chunky Explosion.ogg"
+dest_files=["res://.godot/imported/Chunky Explosion.ogg-0f325a06490f2819b24756cb29589ea7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

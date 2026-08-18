@@ -15,3 +15,7 @@ Others:
 	Addons:
 		Dialogic
 		GodotVoxelSupport
+		
+	Sound Effects (opengameart.org):
+		Joth
+		Prinsu-Kun

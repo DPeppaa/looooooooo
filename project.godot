@@ -29,12 +29,19 @@ PlayerStats="*uid://445lkkq5yrv7"
 
 directories/dch_directory={
 "doctornote": "res://resources/dialogic_settings/characters/doctornote.dch",
-"me": "res://resources/dialogic_settings/characters/me.dch"
+"good_sofa": "res://resources/dialogic_settings/characters/good_sofa.dch",
+"me": "res://resources/dialogic_settings/characters/me.dch",
+"sofa": "res://resources/dialogic_settings/characters/sofa.dch",
+"tv": "res://resources/dialogic_settings/characters/tv.dch"
 }
 directories/dtl_directory={
+"bad_sofa": "res://scenes/game/living_room/dialogue/bad_sofa.dtl",
 "doctornote": "res://scenes/game/bedroom/dialogue/doctornote.dtl",
 "getting_off_bed": "res://scenes/game/bedroom/dialogue/getting_off_bed.dtl",
-"phone": "res://scenes/game/bedroom/dialogue/phone.dtl"
+"good_sofa": "res://scenes/game/living_room/dialogue/good_sofa.dtl",
+"painting": "res://scenes/game/bedroom/dialogue/painting.dtl",
+"phone": "res://scenes/game/bedroom/dialogue/phone.dtl",
+"tv": "res://scenes/game/living_room/dialogue/tv.dtl"
 }
 layout/style_directory={
 "": "res://resources/dialogic_settings/styles/main_style.tres",
