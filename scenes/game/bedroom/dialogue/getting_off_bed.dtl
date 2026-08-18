@@ -1,0 +1,6 @@
+me: ...
+me: 我想要导管子
+me: 但是...
+me: 我需要先找到手机和飞机杯
+set {PlayerStats.movable} = true
+set {PlayerStats.todo} = "任务：拿起桌子上的手机"

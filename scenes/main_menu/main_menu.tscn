@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://bwncqm30kwk11"]
+
+[ext_resource type="Shader" uid="uid://be353yishsikj" path="res://resources/shader/background.gdshader" id="1_fsom3"]
+[ext_resource type="Script" uid="uid://dhv680tfofk77" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
+[ext_resource type="ArrayMesh" uid="uid://etwcskxx3d8l" path="res://resources/model/item/the_cup.vox" id="2_0ebjn"]
+[ext_resource type="Shader" uid="uid://cpiqhs1x23btb" path="res://resources/shader/rainbow.gdshader" id="4_uqeha"]
+[ext_resource type="Shader" uid="uid://b8at74wx4fuej" path="res://resources/shader/diamond_transition.gdshader" id="5_wem23"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fsom3"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0ebjn"]
+sky_material = SubResource("ProceduralSkyMaterial_fsom3")
+
+[sub_resource type="Environment" id="Environment_ob46e"]
+background_mode = 2
+sky = SubResource("Sky_0ebjn")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsom3"]
+albedo_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ebjn"]
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1b6gl"]
+shader = ExtResource("1_fsom3")
+shader_parameter/color_one = Color(1.224127, 0.8152248, 0.74865943, 1)
+shader_parameter/color_two = Color(1, 1, 1, 1)
+shader_parameter/angle = -140.0
+shader_parameter/line_count = 40.0
+shader_parameter/speed = 5.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wem23"]
+shader = ExtResource("4_uqeha")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqeha"]
+shader = ExtResource("4_uqeha")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqeha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ovsr"]
+shader = ExtResource("4_uqeha")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5seab"]
+shader = ExtResource("5_wem23")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 10.0
+
+[sub_resource type="Animation" id="Animation_3ovsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wem23"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ovsr"]
+_data = {
+&"RESET": SubResource("Animation_3ovsr"),
+&"transition": SubResource("Animation_wem23")
+}
+
+[node name="main_menu" type="Control" unique_id=1004571504]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ob46e")
+
+[node name="3d_environment" type="Node3D" parent="." unique_id=348069496]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3d_environment" unique_id=2018458025]
+environment = SubResource("Environment_ob46e")
+
+[node name="box" type="CSGBox3D" parent="3d_environment" unique_id=1631590222]
+size = Vector3(10, 10, 10)
+material = SubResource("StandardMaterial3D_fsom3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="3d_environment/box" unique_id=1631737766]
+operation = 2
+size = Vector3(9, 9, 9)
+material = SubResource("StandardMaterial3D_0ebjn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="3d_environment" unique_id=92608080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+omni_range = 4096.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="3d_environment" unique_id=1026287411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.2)
+omni_range = 4096.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="3d_environment" unique_id=1747959818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.3)
+omni_range = 4096.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="3d_environment" unique_id=209113140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.1, 0)
+omni_range = 4096.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="3d_environment" unique_id=631706979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, 0.1, 0)
+omni_range = 4096.0
+
+[node name="cup_root" type="Node3D" parent="3d_environment" unique_id=1944174037]
+
+[node name="TheCup" type="MeshInstance3D" parent="3d_environment/cup_root" unique_id=2051917364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, -0.05)
+mesh = ExtResource("2_0ebjn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2005310079]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1055229274]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=295227513]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 0.2010713, 0.8, 1.2215483)
+
+[node name="background" type="ColorRect" parent="." unique_id=1861191212]
+material = SubResource("ShaderMaterial_1b6gl")
+layout_mode = 0
+offset_left = 224.21532
+offset_top = -454.9814
+offset_right = 882.3008
+offset_bottom = 700.172
+rotation = 0.6161012
+mouse_filter = 2
+
+[node name="title" type="Label" parent="." unique_id=1670495308]
+material = SubResource("ShaderMaterial_wem23")
+layout_mode = 0
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 500.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 100
+text = "飞  机  杯"
+
+[node name="new_game" type="Button" parent="." unique_id=760144219]
+material = SubResource("ShaderMaterial_uqeha")
+layout_mode = 0
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 256.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uqeha")
+text = "开始游戏"
+
+[node name="quit" type="Button" parent="." unique_id=1532544176]
+material = SubResource("ShaderMaterial_3ovsr")
+layout_mode = 0
+offset_left = 128.0
+offset_top = 336.0
+offset_right = 192.0
+offset_bottom = 381.0
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uqeha")
+text = "退出"
+
+[node name="transition" type="ColorRect" parent="." unique_id=418320514]
+material = SubResource("ShaderMaterial_5seab")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=575390416]
+libraries/ = SubResource("AnimationLibrary_3ovsr")
+
+[connection signal="pressed" from="new_game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://b4b41l8w0twu4"]
+
+[ext_resource type="Script" uid="uid://sni2a16eo8to" path="res://characters/player/player_controller.gd" id="1_bhtu2"]
+[ext_resource type="Shader" uid="uid://4x3epgpt8vb0" path="res://resources/shader/outline.gdshader" id="2_xxgcw"]
+[ext_resource type="Shader" uid="uid://d2n4rq8314job" path="res://resources/shader/blink.gdshader" id="3_exd8k"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bhtu2"]
+height = 2.0777345
+radius = 0.001
+
+[sub_resource type="QuadMesh" id="QuadMesh_y78tp"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhtu2"]
+render_priority = 0
+shader = ExtResource("2_xxgcw")
+shader_parameter/outlineColor = Color(0, 0, 0, 1)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 0.5
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.5000000712500001
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y78tp"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y78tp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dc8e"]
+shader = ExtResource("3_exd8k")
+shader_parameter/open_amount = 0.0
+shader_parameter/edge_blur_amount = 0.0999999977648
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_5dc8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("view/blink:material:shader_parameter/open_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_exd8k"]
+resource_name = "eye_open"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("view/blink:material:shader_parameter/open_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2999999932944, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dc8e"]
+_data = {
+&"RESET": SubResource("Animation_5dc8e"),
+&"eye_open": SubResource("Animation_exd8k")
+}
+
+[node name="player_controller" type="CharacterBody3D" unique_id=1493658465]
+script = ExtResource("1_bhtu2")
+
+[node name="pivot" type="Node3D" parent="." unique_id=1353261542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="camera" type="Camera3D" parent="pivot" unique_id=1557727052]
+
+[node name="interactive_beam" type="Area3D" parent="pivot/camera" unique_id=1076381422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="beam" type="CollisionShape3D" parent="pivot/camera/interactive_beam" unique_id=1536014892]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, -1.5)
+shape = SubResource("CylinderShape3D_bhtu2")
+
+[node name="outline" type="MeshInstance3D" parent="pivot/camera" unique_id=1808494488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_y78tp")
+surface_material_override/0 = SubResource("ShaderMaterial_bhtu2")
+
+[node name="collision" type="CollisionShape3D" parent="." unique_id=1409229124]
+shape = SubResource("CapsuleShape3D_y78tp")
+
+[node name="bean" type="MeshInstance3D" parent="." unique_id=758945780]
+mesh = SubResource("CapsuleMesh_y78tp")
+
+[node name="view" type="Control" parent="." unique_id=132543294]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="blink" type="ColorRect" parent="view" unique_id=804268434]
+material = SubResource("ShaderMaterial_5dc8e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="todo" type="Label" parent="view" unique_id=257487221]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 24
+
+[node name="interact" type="Label" parent="view" unique_id=1792764169]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "互动 (E)"
+
+[node name="animation_player" type="AnimationPlayer" parent="." unique_id=1326238329]
+libraries/ = SubResource("AnimationLibrary_5dc8e")

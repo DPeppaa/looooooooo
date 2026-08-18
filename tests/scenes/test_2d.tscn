@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b40xr47jdlr7e"]
+
+[sub_resource type="GDScript" id="GDScript_44un3"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	Dialogic.start(\"getting_off_bed\")
+"
+
+[node name="test_2d" type="Node2D" unique_id=1056465908]
+script = SubResource("GDScript_44un3")
