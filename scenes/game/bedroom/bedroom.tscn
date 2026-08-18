@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://tkvay08uw2er" path="res://temp_scripts/doctornote.gd" id="7_fih00"]
 [ext_resource type="PackedScene" uid="uid://d3ojp8t1c5muc" path="res://resources/model/furniture/closet.tscn" id="9_1dknf"]
 [ext_resource type="ArrayMesh" uid="uid://3hxuj7fck0ax" path="res://resources/model/item/painting.vox" id="10_7ym2v"]
+[ext_resource type="PackedScene" uid="uid://dbwwhsesk0m6j" path="res://resources/model/kitchen/down_cabinet.tscn" id="12_il20w"]
+[ext_resource type="Script" uid="uid://3tsl4e11lak0" path="res://temp_scripts/fallen_down.gd" id="13_a2thg"]
+[ext_resource type="PackedScene" uid="uid://ddbojuoxo8qhl" path="res://temp_scripts/fallen_down_end.tscn" id="14_qmraj"]
 
 [sub_resource type="Image" id="Image_641w7"]
 data = {
@@ -168,6 +171,8 @@ sky_material = SubResource("ProceduralSkyMaterial_fih00")
 background_mode = 2
 sky = SubResource("Sky_j0vv0")
 glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y78tp"]
 
 [node name="bedroom" type="Node3D" unique_id=456559729]
 script = ExtResource("1_wx36j")
@@ -327,8 +332,21 @@ environment = SubResource("Environment_1dknf")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
+[node name="down_cabinet" parent="." unique_id=1599529041 instance=ExtResource("12_il20w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.1, -7.1)
+
+[node name="fallen_down" type="Area3D" parent="." unique_id=668443884]
+script = ExtResource("13_a2thg")
+
+[node name="fallen_down_end" parent="fallen_down" unique_id=375467667 instance=ExtResource("14_qmraj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fallen_down" unique_id=1127592321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25.900002, 0)
+shape = SubResource("WorldBoundaryShape3D_y78tp")
+
 [connection signal="body_exited" from="room/bed" to="room/bed" method="_on_body_exited"]
 [connection signal="area_entered" from="room/phone" to="room/phone" method="_on_area_entered"]
 [connection signal="area_exited" from="room/phone" to="room/phone" method="_on_area_exited"]
 [connection signal="area_entered" from="room/doctornote" to="room/doctornote" method="_on_area_entered"]
 [connection signal="area_exited" from="room/doctornote" to="room/doctornote" method="_on_area_exited"]
+[connection signal="body_entered" from="fallen_down" to="fallen_down" method="_on_body_entered"]
