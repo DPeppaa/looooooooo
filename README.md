@@ -9,7 +9,7 @@
 使用Godot 4.7.1 stable制作
 
 下载教程：
-  1：前往https://godotengine.org下载Godot 4.7.1
+  1：前往 https://godotengine.org 下载Godot 4.7.1
   
   2：将整个Repo作为zip下载到本地
 
