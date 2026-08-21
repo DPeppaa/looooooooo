@@ -12,6 +12,9 @@ class_name player_controller
 
 @export var speed := 4.
 @export var sensitivity := 0.0015
+@export var jump_velocity := 7.
+var sprint_speed := 1.
+var sprint_multiplier := 1.5
 
 var cam_shake_cooldown_triggered := false
 
@@ -24,8 +27,8 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("a","d","w","s").normalized()
 	var direction = (pivot.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	if input_direction and PlayerStats.movable and Dialogic.current_timeline == null:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * speed * sprint_speed
+		velocity.z = direction.z * speed * sprint_speed
 	else:
 		velocity.x = lerp(velocity.x, 0., 10. * delta)
 		velocity.z = lerp(velocity.z, 0., 10. * delta)
@@ -56,6 +59,15 @@ func _physics_process(delta: float) -> void:
 			shake_point.global_position.z = point_z
 			camera.global_position = shake_point.global_position
 			
+	if Input.is_action_pressed("space"):
+		jump_velocity += 0.2
+	else:
+		jump_velocity = 7.
+	
+	if Input.is_action_pressed("shift"):
+		sprint_speed = sprint_multiplier
+	else:
+		sprint_speed = 1.
 			
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -63,6 +75,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x -= event.relative.y * sensitivity
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		
+	if event.is_action_released("space"):
+		velocity.y = jump_velocity
 
 func _on_shake_timeout() -> void:
 	PlayerStats.camera_shaking = false
