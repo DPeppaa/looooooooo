@@ -9,12 +9,16 @@ class_name player_controller
 @onready var bean: MeshInstance3D = $bean
 @onready var shake: Timer = $shake
 @onready var shake_point: Node3D = $shake_point
+@onready var parkour_points: Label = $view/parkour_points
 
 @export var speed := 4.
 @export var sensitivity := 0.0015
 @export var jump_velocity := 5.
 var sprint_speed := 1.
 var sprint_multiplier := 1.5
+var mouse_moving := false
+var keyboard_moving := false
+var idle_timer := 0.
 
 var cam_shake_cooldown_triggered := false
 
@@ -27,9 +31,12 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("a","d","w","s").normalized()
 	var direction = (pivot.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	if input_direction and PlayerStats.movable and Dialogic.current_timeline == null:
+		keyboard_moving = true
+		idle_timer = 0.
 		velocity.x = direction.x * speed * sprint_speed
 		velocity.z = direction.z * speed * sprint_speed
 	else:
+		keyboard_moving = false
 		velocity.x = lerp(velocity.x, 0., 10. * delta)
 		velocity.z = lerp(velocity.z, 0., 10. * delta)
 		
@@ -68,12 +75,21 @@ func _physics_process(delta: float) -> void:
 		sprint_speed = sprint_multiplier
 	else:
 		sprint_speed = 1.
+		
+##Idle parkour section:
+	print(idle_timer)
+	parkour_points.text = ("跳一跳分数： " + str(PlayerStats.parkour_point))
+	if !mouse_moving && !keyboard_moving && !PlayerStats.in_parkour && Dialogic.current_timeline == null:
+		idle_timer += 1
+	if idle_timer > 600:
+		get_tree().change_scene_to_file("res://scenes/game/idle_parkour/idle_parkour.tscn")
 			
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		pivot.rotation.y -= event.relative.x * sensitivity
 		camera.rotation.x -= event.relative.y * sensitivity
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		idle_timer = 0.
 		
 	if event.is_action_released("space") && is_on_floor() && Dialogic.current_timeline == null:
 		velocity.y = jump_velocity

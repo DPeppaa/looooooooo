@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://i3lmdn3r6ibq"]
+
+[ext_resource type="Script" uid="uid://dx7dlr0vuqgi6" path="res://scenes/game/idle_parkour/idle_parkour.gd" id="1_fluop"]
+[ext_resource type="PackedScene" uid="uid://b4b41l8w0twu4" path="res://characters/player/player_controller.tscn" id="1_owyyg"]
+[ext_resource type="PackedScene" uid="uid://cp24b25gl22g7" path="res://scenes/game/idle_parkour/platform/platform.tscn" id="2_kq0po"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uuj2r"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_owyyg"]
+sky_material = SubResource("ProceduralSkyMaterial_uuj2r")
+
+[sub_resource type="Environment" id="Environment_fluop"]
+background_mode = 2
+sky = SubResource("Sky_owyyg")
+glow_enabled = true
+fog_enabled = true
+fog_height_density = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_uuj2r"]
+size = Vector3(2, 120.09717, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uuj2r"]
+data = PackedVector3Array(-1, 60.0486, 1, 1, 60.0486, 1, -1, -60.0486, 1, 1, 60.0486, 1, 1, -60.0486, 1, -1, -60.0486, 1, 1, 60.0486, -1, -1, 60.0486, -1, 1, -60.0486, -1, -1, 60.0486, -1, -1, -60.0486, -1, 1, -60.0486, -1, 1, 60.0486, 1, 1, 60.0486, -1, 1, -60.0486, 1, 1, 60.0486, -1, 1, -60.0486, -1, 1, -60.0486, 1, -1, 60.0486, -1, -1, 60.0486, 1, -1, -60.0486, -1, -1, 60.0486, 1, -1, -60.0486, 1, -1, -60.0486, -1, 1, 60.0486, 1, -1, 60.0486, 1, 1, 60.0486, -1, -1, 60.0486, 1, -1, 60.0486, -1, 1, 60.0486, -1, -1, -60.0486, 1, 1, -60.0486, 1, -1, -60.0486, -1, 1, -60.0486, 1, 1, -60.0486, -1, -1, -60.0486, -1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y78tp"]
+
+[node name="idle_parkour" type="Node3D" unique_id=974043781]
+script = ExtResource("1_fluop")
+
+[node name="platform" parent="." unique_id=400106497 instance=ExtResource("2_kq0po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.0000005)
+
+[node name="player_controller" parent="." unique_id=1493658465 instance=ExtResource("1_owyyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="environment" type="Node3D" parent="." unique_id=15362348]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment" unique_id=1917430027]
+environment = SubResource("Environment_fluop")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment" unique_id=1063535797]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="start_platform" type="StaticBody3D" parent="." unique_id=1322783213]
+
+[node name="platform" type="MeshInstance3D" parent="start_platform" unique_id=1579580413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.048584, 0)
+mesh = SubResource("BoxMesh_uuj2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="start_platform" unique_id=1485408928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.048584, 0)
+shape = SubResource("ConcavePolygonShape3D_uuj2r")
+
+[node name="return" type="Area3D" parent="." unique_id=432388047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.7, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="return" unique_id=683284596]
+shape = SubResource("WorldBoundaryShape3D_y78tp")
+
+[connection signal="body_entered" from="return" to="." method="_on_return_body_entered"]
+
+[editable path="player_controller"]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cp24b25gl22g7"]
+
+[ext_resource type="Script" uid="uid://5t6jnbypvg8y" path="res://scenes/game/idle_parkour/platform/platform.gd" id="1_14xbp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y78tp"]
+size = Vector3(2, 102.35913, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g71hy"]
+data = PackedVector3Array(-1, 51.1796, 1, 1, 51.1796, 1, -1, -51.1796, 1, 1, 51.1796, 1, 1, -51.1796, 1, -1, -51.1796, 1, 1, 51.1796, -1, -1, 51.1796, -1, 1, -51.1796, -1, -1, 51.1796, -1, -1, -51.1796, -1, 1, -51.1796, -1, 1, 51.1796, 1, 1, 51.1796, -1, 1, -51.1796, 1, 1, 51.1796, -1, 1, -51.1796, -1, 1, -51.1796, 1, -1, 51.1796, -1, -1, 51.1796, 1, -1, -51.1796, -1, -1, 51.1796, 1, -1, -51.1796, 1, -1, -51.1796, -1, 1, 51.1796, 1, -1, 51.1796, 1, 1, 51.1796, -1, -1, 51.1796, 1, -1, 51.1796, -1, 1, 51.1796, -1, -1, -51.1796, 1, 1, -51.1796, 1, -1, -51.1796, -1, 1, -51.1796, 1, 1, -51.1796, -1, -1, -51.1796, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y78tp"]
+size = Vector3(1.9, 0.6, 2)
+
+[node name="platform" type="StaticBody3D" unique_id=400106497]
+script = ExtResource("1_14xbp")
+
+[node name="model" type="MeshInstance3D" parent="." unique_id=1326048300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.179565, 0)
+mesh = SubResource("BoxMesh_y78tp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=449661292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.179565, 0)
+shape = SubResource("ConcavePolygonShape3D_g71hy")
+
+[node name="point1" type="Node3D" parent="." unique_id=876328752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="point2" type="Node3D" parent="." unique_id=1407198443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="jump_area" type="Area3D" parent="." unique_id=2039461743]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jump_area" unique_id=187987016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+shape = SubResource("BoxShape3D_y78tp")
+
+[connection signal="body_entered" from="jump_area" to="." method="_on_jump_area_body_entered"]

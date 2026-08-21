@@ -14,3 +14,5 @@ func _ready() -> void:
 	animation_player.play("eye_open")
 	await animation_player.animation_finished
 	Dialogic.start("getting_off_bed")
+
+	PlayerStats.current_scene = scene_file_path

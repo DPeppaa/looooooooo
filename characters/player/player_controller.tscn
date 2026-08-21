@@ -154,6 +154,15 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "互动 (E)"
 
+[node name="parkour_points" type="Label" parent="view" unique_id=591601513]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 32
+
 [node name="animation_player" type="AnimationPlayer" parent="." unique_id=1326238329]
 libraries/ = SubResource("AnimationLibrary_5dc8e")
 
