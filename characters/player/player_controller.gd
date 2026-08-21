@@ -75,7 +75,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x -= event.relative.y * sensitivity
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		
-	if event.is_action_released("space"):
+	if event.is_action_released("space") && is_on_floor():
 		velocity.y = jump_velocity
 
 func _on_shake_timeout() -> void:
