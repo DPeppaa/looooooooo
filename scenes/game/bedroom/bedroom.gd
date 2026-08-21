@@ -6,6 +6,10 @@ extends Node3D
 @onready var fallen_down_end: Control = $fallen_down/fallen_down_end
 
 func _ready() -> void:
+	if PlayerStats.in_parkour:
+		pass
+	PlayerStats.current_scene = scene_file_path
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	UniversalControls.mouse_captured = true
 	fallen_down_end.visible = false
@@ -14,5 +18,3 @@ func _ready() -> void:
 	animation_player.play("eye_open")
 	await animation_player.animation_finished
 	Dialogic.start("getting_off_bed")
-
-	PlayerStats.current_scene = scene_file_path
