@@ -32,7 +32,7 @@ background_mode = 2
 sky = SubResource("Sky_yi3wj")
 glow_enabled = true
 
-[sub_resource type="Image" id="Image_ura4q"]
+[sub_resource type="Image" id="Image_5hyey"]
 data = {
 "data": PackedByteArray("/////zstHP+QbET///+Z////Zv///zP///8A///M////zMz//8yZ///MZv//zDP//8wA//+Z////mcz//5mZ//+ZZv//mTP//5kA//9m////Zsz//2aZ//9mZv//ZjP//2YA//8z////M8z//zOZ//8zZv//MzP//zMA//8A////AMz//wCZ//8AZv//ADP//wAA/8z////M/8z/zP+Z/8z/Zv/M/zP/zP8A/8zM///MzMz/zMyZ/8zMZv/MzDP/zMwA/8yZ///Mmcz/zJmZ/8yZZv/MmTP/zJkA/8xm///MZsz/zGaZ/8xmZv/MZjP/zGYA/8wz///MM8z/zDOZ/8wzZv/MMzP/zDMA/8wA///MAMz/zACZ/8wAZv/MADP/zAAA/5n///+Z/8z/mf+Z/5n/Zv+Z/zP/mf8A/5nM//+ZzMz/mcyZ/5nMZv+ZzDP/mcwA/5mZ//+Zmcz/mZmZ/5mZZv+ZmTP/mZkA/5lm//+ZZsz/mWaZ/5lmZv+ZZjP/mWYA/5kz//+ZM8z/mTOZ/5kzZv+ZMzP/mTMA/5kA//+ZAMz/mQCZ/5kAZv+ZADP/mQAA/2b///9m/8z/Zv+Z/2b/Zv9m/zP/Zv8A/2bM//9mzMz/ZsyZ/2bMZv9mzDP/ZswA/2aZ//9mmcz/ZpmZ/2aZZv9mmTP/ZpkA/2Zm//9mZsz/ZmaZ/2ZmZv9mZjP/ZmYA/2Yz//9mM8z/ZjOZ/2YzZv9mMzP/ZjMA/2YA//9mAMz/ZgCZ/2YAZv9mADP/ZgAA/zP///8z/8z/M/+Z/zP/Zv8z/zP/M/8A/zPM//8zzMz/M8yZ/zPMZv8zzDP/M8wA/zOZ//8zmcz/M5mZ/zOZZv8zmTP/M5kA/zNm//8zZsz/M2aZ/zNmZv8zZjP/M2YA/zMz//8zM8z/MzOZ/zMzZv8zMzP/MzMA/zMA//8zAMz/MwCZ/zMAZv8zADP/MwAA/wD///8A/8z/AP+Z/wD/Zv8A/zP/AP8A/wDM//8AzMz/AMyZ/wDMZv8AzDP/AMwA/wCZ//8Amcz/AJmZ/wCZZv8AmTP/AJkA/wBm//8AZsz/AGaZ/wBmZv8AZjP/AGYA/wAz//8AM8z/ADOZ/wAzZv8AMzP/ADMA/wAA//8AAMz/AACZ/wAAZv8AADP/7gAA/90AAP+7AAD/qgAA/4gAAP93AAD/VQAA/0QAAP8iAAD/EQAA/wDuAP8A3QD/ALsA/wCqAP8AiAD/AHcA/wBVAP8ARAD/ACIA/wARAP8AAO7/AADd/wAAu/8AAKr/AACI/wAAd/8AAFX/AABE/wAAIv8AABH/7u7u/93d3f+7u7v/qqqq/4iIiP93d3f/VVVV/0RERP8iIiL/ERER/w=="),
 "format": "RGBA8",
@@ -43,9 +43,9 @@ data = {
 
 [sub_resource type="ImageTexture" id="ImageTexture_a55s1"]
 resource_local_to_scene = true
-image = SubResource("Image_ura4q")
+image = SubResource("Image_5hyey")
 
-[sub_resource type="Image" id="Image_jf18o"]
+[sub_resource type="Image" id="Image_w66sf"]
 data = {
 "data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="),
 "format": "RGBA8",
@@ -55,9 +55,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_yhaks"]
-image = SubResource("Image_jf18o")
+image = SubResource("Image_w66sf")
 
-[sub_resource type="Image" id="Image_gt011"]
+[sub_resource type="Image" id="Image_xfiw8"]
 data = {
 "data": PackedByteArray("AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/w=="),
 "format": "RGBA8",
@@ -67,9 +67,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_fus02"]
-image = SubResource("Image_gt011")
+image = SubResource("Image_xfiw8")
 
-[sub_resource type="Image" id="Image_8lcr5"]
+[sub_resource type="Image" id="Image_bb2e1"]
 data = {
 "data": PackedByteArray("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w=="),
 "format": "RGBA8",
@@ -79,7 +79,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_v6wkx"]
-image = SubResource("Image_8lcr5")
+image = SubResource("Image_bb2e1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04yeh"]
 albedo_texture = SubResource("ImageTexture_a55s1")

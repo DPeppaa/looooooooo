@@ -118,7 +118,7 @@ Def
 │   ├── FractionValueDef                    # 分数
 │   └── MaxValueDef / MinValueDef           # 最大/最小
 └── SignalDef            # 信号定义（抽象）→ connect/disconnect_signal(data, callable)
-    └── ConditionSignalDef  # 带条件的信号包装
+	└── ConditionSignalDef  # 带条件的信号包装
 ```
 
 ### 3.3 扩展一个新的 Def
@@ -580,11 +580,11 @@ DEV Framework 的 MCP 使用 **Streamable HTTP** 传输，端点为 `http://127.
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "devframework-godot-mcp": {
-      "type": "remote",
-      "url": "http://127.0.0.1:8931/mcp",
-      "enabled": true
-    }
+	"devframework-godot-mcp": {
+	  "type": "remote",
+	  "url": "http://127.0.0.1:8931/mcp",
+	  "enabled": true
+	}
   }
 }
 ```
@@ -603,9 +603,9 @@ claude mcp list        # 查看已配置
 ```jsonc
 {
   "mcpServers": {
-    "devframework-godot-mcp": {
-      "url": "http://127.0.0.1:8931/mcp"
-    }
+	"devframework-godot-mcp": {
+	  "url": "http://127.0.0.1:8931/mcp"
+	}
   }
 }
 ```
