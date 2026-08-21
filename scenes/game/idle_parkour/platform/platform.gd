@@ -14,6 +14,6 @@ func _on_jump_area_body_entered(body: Node3D) -> void:
 			var next_platform = next_platform_scene.instantiate()
 			var spawn_point_x = randf_range(point_1.global_position.x, point_2.global_position.x)
 			next_platform.global_position = Vector3(spawn_point_x, global_position.y, global_position.z)
-			add_child(next_platform)
+			get_parent().add_child(next_platform)
 			
 			already_jumped = true

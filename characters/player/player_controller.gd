@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		sprint_speed = 1.
 		
 ##Idle parkour section:
-	print(idle_timer)
+	#print(idle_timer)
 	parkour_points.text = ("跳一跳分数： " + str(PlayerStats.parkour_point))
 	if !mouse_moving && !keyboard_moving && !PlayerStats.in_parkour && Dialogic.current_timeline == null:
 		idle_timer += 1
