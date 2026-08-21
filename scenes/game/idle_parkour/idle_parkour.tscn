@@ -54,6 +54,8 @@ mesh = SubResource("BoxMesh_uuj2r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.048584, 0)
 shape = SubResource("ConcavePolygonShape3D_uuj2r")
 
+[node name="spawn_point" type="Node3D" parent="start_platform" unique_id=654829374]
+
 [node name="return" type="Area3D" parent="." unique_id=432388047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.7, 0)
 
