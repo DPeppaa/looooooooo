@@ -8,6 +8,17 @@
 [ext_resource type="ArrayMesh" uid="uid://devilo376xd3y" path="res://resources/model/living_room/tv_desk.vox" id="6_u1wm6"]
 [ext_resource type="ArrayMesh" uid="uid://cv7aht27lgqmw" path="res://resources/model/living_room/tv.vox" id="7_ahvys"]
 [ext_resource type="PackedScene" uid="uid://bm7analwxpnqb" path="res://resources/model/living_room/sofa.tscn" id="8_ura4q"]
+[ext_resource type="ArrayMesh" uid="uid://bu7sa1ayb4ju4" path="res://resources/model/living_room/lamp.vox" id="9_jf18o"]
+[ext_resource type="ArrayMesh" uid="uid://cxj6krv8qagm" path="res://resources/model/item/doctor_note.vox" id="10_5hyey"]
+[ext_resource type="ArrayMesh" uid="uid://3hxuj7fck0ax" path="res://resources/model/item/painting.vox" id="11_w66sf"]
+[ext_resource type="ArrayMesh" uid="uid://bwxbkbo1abcif" path="res://resources/model/item/phone.vox" id="12_xfiw8"]
+[ext_resource type="ArrayMesh" uid="uid://etwcskxx3d8l" path="res://resources/model/item/the_cup.vox" id="13_bb2e1"]
+[ext_resource type="ArrayMesh" uid="uid://ddgx2sy2mvg42" path="res://resources/model/furniture/bed.vox" id="14_br7c4"]
+[ext_resource type="PackedScene" uid="uid://d3ojp8t1c5muc" path="res://resources/model/furniture/closet.tscn" id="15_lxqkn"]
+[ext_resource type="ArrayMesh" uid="uid://uukrqbbnpems" path="res://resources/model/furniture/desk.vox" id="16_fdhxs"]
+[ext_resource type="ArrayMesh" uid="uid://cmy3hydjramit" path="res://resources/model/furniture/door.vox" id="17_2pqy1"]
+[ext_resource type="ArrayMesh" uid="uid://dj0wwcm76p31" path="res://resources/model/furniture/light.vox" id="18_3cih1"]
+[ext_resource type="ArrayMesh" uid="uid://cgyb204xaiiii" path="res://resources/model/furniture/window.vox" id="19_7wvh2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qpve"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -141,5 +152,48 @@ mesh = ExtResource("7_ahvys")
 
 [node name="sofa" parent="." unique_id=124023113 instance=ExtResource("8_ura4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.323733, 0, -8.188096)
+
+[node name="Lamp" type="MeshInstance3D" parent="." unique_id=455845791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.503612, 0, 1.2488637)
+mesh = ExtResource("9_jf18o")
+
+[node name="DoctorNote" type="MeshInstance3D" parent="." unique_id=760277294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.493982, -4.7683716e-07, -0.21158075)
+mesh = ExtResource("10_5hyey")
+
+[node name="Painting" type="MeshInstance3D" parent="." unique_id=2066609476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.942351, 0, 0.30039835)
+mesh = ExtResource("11_w66sf")
+
+[node name="Phone" type="MeshInstance3D" parent="." unique_id=1906213973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.725136, -4.7683716e-07, 0.7852185)
+mesh = ExtResource("12_xfiw8")
+
+[node name="TheCup" type="MeshInstance3D" parent="." unique_id=269368805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9823914, -4.7683716e-07, 1.9466681)
+mesh = ExtResource("13_bb2e1")
+
+[node name="Bed" type="MeshInstance3D" parent="." unique_id=1150360346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.055438, 0, 8.000128)
+mesh = ExtResource("14_br7c4")
+
+[node name="closet" parent="." unique_id=1030859544 instance=ExtResource("15_lxqkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2621207, 9.536743e-07, 8.949844)
+
+[node name="Desk" type="MeshInstance3D" parent="." unique_id=1789685696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0204563, 0, 5.439557)
+mesh = ExtResource("16_fdhxs")
+
+[node name="Door" type="MeshInstance3D" parent="." unique_id=1975386288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.021206, 0, 7.634172)
+mesh = ExtResource("17_2pqy1")
+
+[node name="Light" type="MeshInstance3D" parent="." unique_id=1076283492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.230534, 0, 3.1531253)
+mesh = ExtResource("18_3cih1")
+
+[node name="Window" type="MeshInstance3D" parent="." unique_id=1410436865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.708487, -4.7683716e-07, 3.7504454)
+mesh = ExtResource("19_7wvh2")
 
 [editable path="player_controller"]
