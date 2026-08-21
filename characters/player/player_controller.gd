@@ -91,7 +91,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		idle_timer = 0.
 		
-	if event.is_action_released("space") && is_on_floor() && Dialogic.current_timeline == null:
+	if event.is_action_released("space") && Dialogic.current_timeline == null && is_on_floor():
 		velocity.y = jump_velocity
 
 func _on_shake_timeout() -> void:
