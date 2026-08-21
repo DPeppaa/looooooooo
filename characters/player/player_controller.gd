@@ -12,7 +12,7 @@ class_name player_controller
 
 @export var speed := 4.
 @export var sensitivity := 0.0015
-@export var jump_velocity := 7.
+@export var jump_velocity := 5.
 var sprint_speed := 1.
 var sprint_multiplier := 1.5
 
@@ -75,7 +75,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x -= event.relative.y * sensitivity
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		
-	if event.is_action_released("space") && is_on_floor():
+	if event.is_action_released("space") && is_on_floor() && Dialogic.current_timeline == null:
 		velocity.y = jump_velocity
 
 func _on_shake_timeout() -> void:

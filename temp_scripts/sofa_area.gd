@@ -18,6 +18,7 @@ func _input(event: InputEvent) -> void:
 		PlayerStats.beam_colliding = false
 		player_looking = false
 		PlayerStats.movable = true
+		sofa.disable_collision()
 		Dialogic.start("good_sofa")
 		TempVar.sofa_flying = true
 		

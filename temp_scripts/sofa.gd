@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var collision_shape_3d: CollisionShape3D = $collision/CollisionShape3D
 
 @export var explosion : PackedScene
 
@@ -20,6 +21,9 @@ func _on_timer_timeout() -> void:
 		explosion_count += 1
 	else:
 		timer.stop()
+		
+func disable_collision():
+	collision_shape_3d.disabled = true
 
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("e"):
