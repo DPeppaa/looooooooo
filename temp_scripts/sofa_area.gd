@@ -3,13 +3,15 @@ extends Area3D
 @onready var holding_point: Node3D = $"../../player_controller/pivot/camera/holding_point"
 @onready var sofa: Node3D = $sofa
 
+var finished := false
 var player_looking := false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("e") && player_looking && Dialogic.current_timeline == null && PlayerStats.holding != "painting":
+	if event.is_action_pressed("e") && player_looking && Dialogic.current_timeline == null && PlayerStats.holding != "painting" && !finished:
 		Dialogic.start("bad_sofa")
 		TempVar.spoken_to_sofa = true
 	elif event.is_action_pressed("e") && player_looking && Dialogic.current_timeline == null && PlayerStats.holding == "painting":
+		finished = true
 		sofa.explode()
 		PlayerStats.holding = ""
 		PlayerStats.movable = false
